@@ -61,6 +61,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let _ = nextVC.view
         nextVC.tableNumberLabel.text = "Table\(tablenumber!)"
         nextVC.tableNumber = "\(tablenumber!)"
+        nextVC.SumMoneyAmount.text = "0"
+        nextVC.GetMoneyAmount.text = "0"
+        nextVC.BackMoneyAmount.text = "0"
     }
     
     override func viewDidLoad() {
