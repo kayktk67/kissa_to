@@ -20,6 +20,14 @@ class SubViewController: UIViewController{
     @IBOutlet weak var D2AmountLabel: UILabel!
     @IBOutlet weak var D3AmountLabel: UILabel!
     @IBOutlet weak var D4AmountLabel: UILabel!
+    @IBOutlet weak var DX1AmountLabel: UILabel!
+    @IBOutlet weak var DX2AmountLabel: UILabel!
+    @IBOutlet weak var DX3AmountLabel: UILabel!
+    @IBOutlet weak var DX4AmountLabel: UILabel!
+    @IBOutlet weak var C1AmountLabel: UILabel!
+    @IBOutlet weak var C3AmountLabel: UILabel!
+    @IBOutlet weak var C10AmountLabel: UILabel!
+    
     @IBOutlet weak var B1StepperValue: UIStepper!
     @IBOutlet weak var B2StepperValue: UIStepper!
     @IBOutlet weak var S1StepperValue: UIStepper!
@@ -29,6 +37,13 @@ class SubViewController: UIViewController{
     @IBOutlet weak var D2StepperValue: UIStepper!
     @IBOutlet weak var D3StepperValue: UIStepper!
     @IBOutlet weak var D4StepperValue: UIStepper!
+    @IBOutlet weak var DX1StepperValue: UIStepper!
+    @IBOutlet weak var DX2StepperValue: UIStepper!
+    @IBOutlet weak var DX3StepperValue: UIStepper!
+    @IBOutlet weak var DX4StepperValue: UIStepper!
+    @IBOutlet weak var C1StepperValue: UIStepper!
+    @IBOutlet weak var C3StepperValue: UIStepper!
+    @IBOutlet weak var C10StepperValue: UIStepper!
     
     @IBOutlet weak var AllB1AmountLabel: UILabel!
     @IBOutlet weak var AllB2AmountLabel: UILabel!
@@ -39,12 +54,19 @@ class SubViewController: UIViewController{
     @IBOutlet weak var AllD2AmountLabel: UILabel!
     @IBOutlet weak var AllD3AmountLabel: UILabel!
     @IBOutlet weak var AllD4AmountLabel: UILabel!
+    @IBOutlet weak var AllDX1AmountLabel: UILabel!
+    @IBOutlet weak var AllDX2AmountLabel: UILabel!
+    @IBOutlet weak var AllDX3AmountLabel: UILabel!
+    @IBOutlet weak var AllDX4AmountLabel: UILabel!
+    @IBOutlet weak var AllC1AmountLabel: UILabel!
+    @IBOutlet weak var AllC3AmountLabel: UILabel!
+    @IBOutlet weak var AllC10AmountLabel: UILabel!
     @IBOutlet weak var tableNumberLabel: UILabel!
     
     @IBOutlet weak var BStatus: UILabel!
     @IBOutlet weak var SStatus: UILabel!
     @IBOutlet weak var DStatus: UILabel!
-    
+    @IBOutlet weak var DXStatus: UILabel!
     
     @IBOutlet weak var SumMoneyAmount: UILabel!
     @IBOutlet weak var GetMoneyAmount: UILabel!
@@ -59,6 +81,7 @@ class SubViewController: UIViewController{
     var tbstatus : String?
     var sstatus : String?
     var dstatus : String?
+    var dxstatus : String?
     var b1amount : String?
     var b2amount : String?
     var s1amount : String?
@@ -68,12 +91,22 @@ class SubViewController: UIViewController{
     var d2amount : String?
     var d3amount : String?
     var d4amount : String?
+    var dx1amount : String?
+    var dx2amount : String?
+    var dx3amount : String?
+    var dx4amount : String?
+    var c1amount : String?
+    var c3amount : String?
+    var c10amount : String?
     var bamount = 0
     var samount = 0
     var damount = 0
+    var ddamount = 0
+    var dxamount = 0
     var bprice = 0
     var sprice = 0
     var dprice = 0
+    var cprice = 0
     var hoge : String?
     var allb1amount : String?
     var allb2amount : String?
@@ -84,6 +117,13 @@ class SubViewController: UIViewController{
     var alld2amount : String?
     var alld3amount : String?
     var alld4amount : String?
+    var alldx1amount : String?
+    var alldx2amount : String?
+    var alldx3amount : String?
+    var alldx4amount : String?
+    var allc1amount : String?
+    var allc3amount : String?
+    var allc10amount : String?
     var newallb1amount : Int?
     var newallb2amount : Int?
     var newalls1amount : Int?
@@ -93,6 +133,13 @@ class SubViewController: UIViewController{
     var newalld2amount : Int?
     var newalld3amount : Int?
     var newalld4amount : Int?
+    var newalldx1amount : Int?
+    var newalldx2amount : Int?
+    var newalldx3amount : Int?
+    var newalldx4amount : Int?
+    var newallc1amount : Int?
+    var newallc3amount : Int?
+    var newallc10amount : Int?
 
     
     //Stepper
@@ -101,63 +148,117 @@ class SubViewController: UIViewController{
         B1AmountLabel.text = "\(Amount)"
         bamount = Int(B1StepperValue.value + B2StepperValue.value)
         bprice = bamount * 200
-        SumMoneyAmount.text = "\(bprice + sprice + dprice)"
+        SumMoneyAmount.text = "\(bprice + sprice + dprice + cprice)"
     }
     @IBAction func B2Stepper(_ sender: UIStepper) {
         let Amount = Int(sender.value)
         B2AmountLabel.text = "\(Amount)"
         bamount = Int(B1StepperValue.value + B2StepperValue.value)
         bprice = bamount * 200
-        SumMoneyAmount.text = "\(bprice + sprice + dprice)"
+        SumMoneyAmount.text = "\(bprice + sprice + dprice + cprice)"
     }
     @IBAction func S1Stepper(_ sender: UIStepper) {
         let Amount = Int(sender.value)
         S1AmountLabel.text = "\(Amount)"
         samount = Int(S1StepperValue.value + S2StepperValue.value + S3StepperValue.value)
         sprice = samount * 250
-        SumMoneyAmount.text = "\(bprice + sprice + dprice)"
+        SumMoneyAmount.text = "\(bprice + sprice + dprice + cprice)"
     }
     @IBAction func S2Stepper(_ sender: UIStepper) {
         let Amount = Int(sender.value)
         S2AmountLabel.text = "\(Amount)"
         samount = Int(S1StepperValue.value + S2StepperValue.value + S3StepperValue.value)
         sprice = samount * 250
-        SumMoneyAmount.text = "\(bprice + sprice + dprice)"
+        SumMoneyAmount.text = "\(bprice + sprice + dprice + cprice)"
     }
     @IBAction func S3Stepper(_ sender: UIStepper) {
         let Amount = Int(sender.value)
         S3AmountLabel.text = "\(Amount)"
         samount = Int(S1StepperValue.value + S2StepperValue.value + S3StepperValue.value)
         sprice = samount * 250
-        SumMoneyAmount.text = "\(bprice + sprice + dprice)"
+        SumMoneyAmount.text = "\(bprice + sprice + dprice + cprice)"
     }
     @IBAction func D1Stepper(_ sender: UIStepper) {
         let Amount = Int(sender.value)
         D1AmountLabel.text = "\(Amount)"
-        damount = Int(D1StepperValue.value) + Int(D2StepperValue.value) + Int(D3StepperValue.value) + Int(D4StepperValue.value)
+        ddamount = Int(D1StepperValue.value) + Int(D2StepperValue.value) + Int(D3StepperValue.value) + Int(D4StepperValue.value)
+        damount = ddamount + dxamount
         dprice = damount * 150
-        SumMoneyAmount.text = "\(bprice + sprice + dprice)"
+        SumMoneyAmount.text = "\(bprice + sprice + dprice + cprice)"
     }
     @IBAction func D2Stepper(_ sender: UIStepper) {
         let Amount = Int(sender.value)
         D2AmountLabel.text = "\(Amount)"
-        damount = Int(D1StepperValue.value) + Int(D2StepperValue.value) + Int(D3StepperValue.value) + Int(D4StepperValue.value)
+        ddamount = Int(D1StepperValue.value) + Int(D2StepperValue.value) + Int(D3StepperValue.value) + Int(D4StepperValue.value)
+        damount = ddamount + dxamount
         dprice = damount * 150
-        SumMoneyAmount.text = "\(bprice + sprice + dprice)"
+        SumMoneyAmount.text = "\(bprice + sprice + dprice + cprice)"
     }
     @IBAction func D3Stepper(_ sender: UIStepper) {
         let Amount = Int(sender.value)
         D3AmountLabel.text = "\(Amount)"
-        damount = Int(D1StepperValue.value) + Int(D2StepperValue.value) + Int(D3StepperValue.value) + Int(D4StepperValue.value)
+        ddamount = Int(D1StepperValue.value) + Int(D2StepperValue.value) + Int(D3StepperValue.value) + Int(D4StepperValue.value)
+        damount = ddamount + dxamount
         dprice = damount * 150
-        SumMoneyAmount.text = "\(bprice + sprice + dprice)"
+        SumMoneyAmount.text = "\(bprice + sprice + dprice + cprice)"
     }
     @IBAction func D4Stepper(_ sender: UIStepper) {
         let Amount = Int(sender.value)
         D4AmountLabel.text = "\(Amount)"
-        damount = Int(D1StepperValue.value) + Int(D2StepperValue.value) + Int(D3StepperValue.value) + Int(D4StepperValue.value)
+        ddamount = Int(D1StepperValue.value) + Int(D2StepperValue.value) + Int(D3StepperValue.value) + Int(D4StepperValue.value)
+        damount = ddamount + dxamount
         dprice = damount * 150
-        SumMoneyAmount.text = "\(bprice + sprice + dprice)"
+        SumMoneyAmount.text = "\(bprice + sprice + dprice + cprice)"
+    }
+    @IBAction func DX1Stepper(_ sender: UIStepper) {
+        let Amount = Int(sender.value)
+        DX1AmountLabel.text = "\(Amount)"
+        dxamount = Int(DX1StepperValue.value) + Int(DX2StepperValue.value) + Int(DX3StepperValue.value) + Int(DX4StepperValue.value)
+        damount = ddamount + dxamount
+        dprice = damount * 150
+        SumMoneyAmount.text = "\(bprice + sprice + dprice + cprice)"
+    }
+    @IBAction func DX2Stepper(_ sender: UIStepper) {
+        let Amount = Int(sender.value)
+        DX2AmountLabel.text = "\(Amount)"
+        dxamount = Int(DX1StepperValue.value) + Int(DX2StepperValue.value) + Int(DX3StepperValue.value) + Int(DX4StepperValue.value)
+        damount = ddamount + dxamount
+        dprice = damount * 150
+        SumMoneyAmount.text = "\(bprice + sprice + dprice + cprice)"
+    }
+    @IBAction func DX3Stepper(_ sender: UIStepper) {
+        let Amount = Int(sender.value)
+        DX3AmountLabel.text = "\(Amount)"
+        dxamount = Int(DX1StepperValue.value) + Int(DX2StepperValue.value) + Int(DX3StepperValue.value) + Int(DX4StepperValue.value)
+        damount = ddamount + dxamount
+        dprice = damount * 150
+        SumMoneyAmount.text = "\(bprice + sprice + dprice + cprice)"
+    }
+    @IBAction func DX4Stepper(_ sender: UIStepper) {
+        let Amount = Int(sender.value)
+        DX4AmountLabel.text = "\(Amount)"
+        dxamount = Int(DX1StepperValue.value) + Int(DX2StepperValue.value) + Int(DX3StepperValue.value) + Int(DX4StepperValue.value)
+        damount = ddamount + dxamount
+        dprice = damount * 150
+        SumMoneyAmount.text = "\(bprice + sprice + dprice + cprice)"
+    }
+    @IBAction func C1Stepper(_ sender: UIStepper) {
+        let Amount = Int(sender.value)
+        C1AmountLabel.text = "\(Amount)"
+        cprice = Int(C1StepperValue.value)*150 + Int(C3StepperValue.value)*400 + Int(C10StepperValue.value)*1200
+        SumMoneyAmount.text = "\(bprice + sprice + dprice + cprice)"
+    }
+    @IBAction func C3Stepper(_ sender: UIStepper) {
+        let Amount = Int(sender.value)
+        C3AmountLabel.text = "\(Amount)"
+        cprice = Int(C1StepperValue.value)*150 + Int(C3StepperValue.value)*400 + Int(C10StepperValue.value)*1200
+        SumMoneyAmount.text = "\(bprice + sprice + dprice + cprice)"
+    }
+    @IBAction func C10Stepper(_ sender: UIStepper) {
+        let Amount = Int(sender.value)
+        C10AmountLabel.text = "\(Amount)"
+        cprice = Int(C1StepperValue.value)*150 + Int(C3StepperValue.value)*400 + Int(C10StepperValue.value)*1200
+        SumMoneyAmount.text = "\(bprice + sprice + dprice + cprice)"
     }
     
     @IBAction func number(_ sender: UIButton) {
@@ -176,6 +277,7 @@ class SubViewController: UIViewController{
             }
         }
     }
+    
     @IBAction func clear(_ sender: Any) {
         GetMoneyAmount.text = "0"
         BackMoneyAmount.text = "0"
@@ -188,6 +290,7 @@ class SubViewController: UIViewController{
     
     //追加ボタン
     @IBAction func add(_ sender: Any) {
+        BackMoneyAmount.text = "\(Int(GetMoneyAmount.text!)!-Int(SumMoneyAmount.text!)!)"
         let alertController1 = UIAlertController(title: "注文",message: "", preferredStyle: UIAlertController.Style.alert)
         let okAction1 = UIAlertAction(title: "OK", style: UIAlertAction.Style.default){ (action: UIAlertAction) in
             let defaultPlacex = self.DBRef1.child("table/status").child(self.tableNumber!)
@@ -209,8 +312,15 @@ class SubViewController: UIViewController{
             self.d2amount = self.D2AmountLabel.text
             self.d3amount = self.D3AmountLabel.text
             self.d4amount = self.D4AmountLabel.text
+            self.dx1amount = self.DX1AmountLabel.text
+            self.dx2amount = self.DX2AmountLabel.text
+            self.dx3amount = self.DX3AmountLabel.text
+            self.dx4amount = self.DX4AmountLabel.text
+            self.c1amount = self.C1AmountLabel.text
+            self.c3amount = self.C3AmountLabel.text
+            self.c10amount = self.C10AmountLabel.text
                     
-            self.DBRef1.child("table/order").child(self.tableNumber!).setValue(["b1amount":0,"b2amount":0,"b3amount":self.b1amount!,"b4amount":self.b2amount!,"s1amount":self.s1amount!,"s2amount":self.s2amount!,"s3amount":self.s3amount!,"d1amount":self.d1amount!,"d2amount":self.d2amount!,"d3amount":self.d3amount!,"d4amount":self.d4amount!,"de1amount":0,"de2amount":0,"de3amount":0,"time":ServerValue.timestamp()])
+            self.DBRef1.child("table/order").child(self.tableNumber!).setValue(["b1amount":0,"b2amount":0,"b3amount":self.b1amount!,"b4amount":self.b2amount!,"s1amount":self.s1amount!,"s2amount":self.s2amount!,"s3amount":self.s3amount!,"d1amount":self.d1amount!,"d2amount":self.d2amount!,"d3amount":self.d3amount!,"d4amount":self.d4amount!,"dx1amount":self.dx1amount!,"dx2amount":self.dx2amount!,"dx3amount":self.dx3amount!,"dx4amount":self.dx4amount!,"de1amount":0,"de2amount":0,"de3amount":0,"c1amount":self.c1amount!,"c3amount":self.c3amount!,"c10amount":self.c10amount!,"time":ServerValue.timestamp()])
             self.DBRef1.child("table/status").child(self.tableNumber!).setValue(1)
             self.DBRef1.child("table/bstatus").child(self.tableNumber!).setValue(1)
             self.DBRef1.child("table/destatus").child(self.tableNumber!).setValue(1)
@@ -221,7 +331,7 @@ class SubViewController: UIViewController{
             self.DBRef1.child("table/orderkey").child(self.tableNumber!).setValue(key)
                     
             //データセット
-            self.DBRef1.child("todata").child(key).setValue(["ordertime":ServerValue.timestamp(),"table":self.tableNumber!,"b3":self.b1amount!,"b4":self.b2amount!,"s1":self.s1amount!,"s2":self.s2amount!,"s3":self.s3amount!,"d1":self.d1amount!,"d2":self.d2amount!,"d3":self.d3amount!,"d4":self.d4amount!])
+            self.DBRef1.child("todata").child(key).setValue(["ordertime":ServerValue.timestamp(),"table":self.tableNumber!,"b3":self.b1amount!,"b4":self.b2amount!,"s1":self.s1amount!,"s2":self.s2amount!,"s3":self.s3amount!,"d1":self.d1amount!,"d2":self.d2amount!,"d3":self.d3amount!,"d4":self.d4amount!,"dx1":self.dx1amount!,"dx2":self.dx2amount!,"dx3":self.dx3amount!,"dx4":self.dx4amount!,"c1":self.c1amount!,"c3":self.c3amount!,"c10":self.c10amount!])
             
             //全食数の更新
             let defaultPlace = self.DBRef1.child("table/allorder/allb3amount")
@@ -278,9 +388,52 @@ class SubViewController: UIViewController{
                 self.newalld4amount = Int(self.alld4amount!)! - Int(self.d4amount!)!
                 self.DBRef1.child("table/allorder/alld4amount").setValue(self.newalld4amount)
             })
-            
-            
-            
+            let defaultPlace12 = self.DBRef1.child("table/allorder/alldx1amount")
+            defaultPlace12.observeSingleEvent(of: .value, with: { (snapshot) in
+                self.alldx1amount = (snapshot.value! as AnyObject).description
+                self.newalldx1amount = Int(self.alldx1amount!)! - Int(self.dx1amount!)!
+                self.DBRef1.child("table/allorder/alldx1amount").setValue(self.newalldx1amount)
+            })
+            let defaultPlace13 = self.DBRef1.child("table/allorder/alldx2amount")
+            defaultPlace13.observeSingleEvent(of: .value, with: { (snapshot) in
+                self.alldx2amount = (snapshot.value! as AnyObject).description
+                self.newalldx2amount = Int(self.alldx2amount!)! - Int(self.dx2amount!)!
+                self.DBRef1.child("table/allorder/alldx2amount").setValue(self.newalldx2amount)
+            })
+            let defaultPlace14 = self.DBRef1.child("table/allorder/alldx3amount")
+            defaultPlace14.observeSingleEvent(of: .value, with: { (snapshot) in
+                self.alldx3amount = (snapshot.value! as AnyObject).description
+                self.newalldx3amount = Int(self.alldx3amount!)! - Int(self.dx3amount!)!
+                self.DBRef1.child("table/allorder/alldx3amount").setValue(self.newalldx3amount)
+            })
+            let defaultPlace15 = self.DBRef1.child("table/allorder/alldx4amount")
+            defaultPlace15.observeSingleEvent(of: .value, with: { (snapshot) in
+                self.alldx4amount = (snapshot.value! as AnyObject).description
+                self.newalldx4amount = Int(self.alldx4amount!)! - Int(self.dx4amount!)!
+                self.DBRef1.child("table/allorder/alldx4amount").setValue(self.newalldx4amount)
+            })
+            let defaultPlace9 = self.DBRef1.child("table/allorder/allc1amount")
+            defaultPlace9.observeSingleEvent(of: .value, with: { (snapshot) in
+                self.allc1amount = (snapshot.value! as AnyObject).description
+                self.newallc1amount = Int(self.allc1amount!)! - Int(self.c1amount!)!
+                self.DBRef1.child("table/allorder/allc1amount").setValue(self.newallc1amount)
+            })
+            let defaultPlace10 = self.DBRef1.child("table/allorder/allc3amount")
+            defaultPlace10.observeSingleEvent(of: .value, with: { (snapshot) in
+                self.allc3amount = (snapshot.value! as AnyObject).description
+                self.newallc3amount = Int(self.allc3amount!)! - Int(self.c3amount!)!
+                self.DBRef1.child("table/allorder/allc3amount").setValue(self.newallc3amount)
+            })
+            let defaultPlace11 = self.DBRef1.child("table/allorder/allc10amount")
+            defaultPlace11.observeSingleEvent(of: .value, with: { (snapshot) in
+                self.allc10amount = (snapshot.value! as AnyObject).description
+                self.newallc10amount = Int(self.allc10amount!)! - Int(self.c10amount!)!
+                self.DBRef1.child("table/allorder/allc10amount").setValue(self.newallc10amount)
+            })
+                    let alertController = UIAlertController(title: "お釣りは\(String(describing: self.BackMoneyAmount.text!))円です",message: "", preferredStyle: UIAlertController.Style.alert)
+                    let OKButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil)
+                    alertController.addAction(OKButton)
+                    self.present(alertController,animated: true,completion: nil)
                 }
             })
         }
@@ -359,6 +512,56 @@ class SubViewController: UIViewController{
                 self.DBRef1.child("table/allorder/alld4amount").setValue(self.newalld4amount)
                 self.DBRef1.child("table/order").child(self.tableNumber!).child("d4amount").setValue(0)
             })
+            let defaultPlace12 = self.DBRef1.child("table/allorder/alldx1amount")
+            defaultPlace12.observeSingleEvent(of: .value, with: { (snapshot) in
+                self.alldx1amount = (snapshot.value! as AnyObject).description
+                self.newalldx1amount = Int(self.alldx1amount!)! + Int(self.dx1amount!)!
+                self.DBRef1.child("table/allorder/alldx1amount").setValue(self.newalldx1amount)
+                self.DBRef1.child("table/order").child(self.tableNumber!).child("dx1amount").setValue(0)
+            })
+            let defaultPlace13 = self.DBRef1.child("table/allorder/alldx2amount")
+            defaultPlace13.observeSingleEvent(of: .value, with: { (snapshot) in
+                self.alldx2amount = (snapshot.value! as AnyObject).description
+                self.newalldx2amount = Int(self.alldx2amount!)! + Int(self.dx2amount!)!
+                self.DBRef1.child("table/allorder/alldx2amount").setValue(self.newalldx2amount)
+                self.DBRef1.child("table/order").child(self.tableNumber!).child("dx2amount").setValue(0)
+            })
+            let defaultPlace14 = self.DBRef1.child("table/allorder/alldx3amount")
+            defaultPlace14.observeSingleEvent(of: .value, with: { (snapshot) in
+                self.alldx3amount = (snapshot.value! as AnyObject).description
+                self.newalldx3amount = Int(self.alldx3amount!)! + Int(self.dx3amount!)!
+                self.DBRef1.child("table/allorder/alldx3amount").setValue(self.newalldx3amount)
+                self.DBRef1.child("table/order").child(self.tableNumber!).child("dx3amount").setValue(0)
+            })
+            let defaultPlace15 = self.DBRef1.child("table/allorder/alldx4amount")
+            defaultPlace15.observeSingleEvent(of: .value, with: { (snapshot) in
+                self.alldx4amount = (snapshot.value! as AnyObject).description
+                self.newalldx4amount = Int(self.alldx4amount!)! + Int(self.dx4amount!)!
+                self.DBRef1.child("table/allorder/alldx4amount").setValue(self.newalldx4amount)
+                self.DBRef1.child("table/order").child(self.tableNumber!).child("dx4amount").setValue(0)
+            })
+            let defaultPlace9 = self.DBRef1.child("table/allorder/allc1amount")
+            defaultPlace9.observeSingleEvent(of: .value, with: { (snapshot) in
+                self.allc1amount = (snapshot.value! as AnyObject).description
+                self.newallc1amount = Int(self.allc1amount!)! + Int(self.c1amount!)!
+                self.DBRef1.child("table/allorder/allc1amount").setValue(self.newallc1amount)
+                self.DBRef1.child("table/order").child(self.tableNumber!).child("c1amount").setValue(0)
+            })
+            let defaultPlace10 = self.DBRef1.child("table/allorder/allc3amount")
+            defaultPlace10.observeSingleEvent(of: .value, with: { (snapshot) in
+                self.allc3amount = (snapshot.value! as AnyObject).description
+                self.newallc3amount = Int(self.allc3amount!)! + Int(self.c3amount!)!
+                self.DBRef1.child("table/allorder/allc3amount").setValue(self.newallc3amount)
+                self.DBRef1.child("table/order").child(self.tableNumber!).child("c3amount").setValue(0)
+            })
+            let defaultPlace11 = self.DBRef1.child("table/allorder/allc10amount")
+            defaultPlace11.observeSingleEvent(of: .value, with: { (snapshot) in
+                self.allc10amount = (snapshot.value! as AnyObject).description
+                self.newallc10amount = Int(self.allc10amount!)! + Int(self.c10amount!)!
+                self.DBRef1.child("table/allorder/allc10amount").setValue(self.newallc10amount)
+                self.DBRef1.child("table/order").child(self.tableNumber!).child("c10amount").setValue(0)
+            })
+            
             
             self.B1AmountLabel.text = "0"
             self.B2AmountLabel.text = "0"
@@ -369,6 +572,13 @@ class SubViewController: UIViewController{
             self.D2AmountLabel.text = "0"
             self.D3AmountLabel.text = "0"
             self.D4AmountLabel.text = "0"
+            self.DX1AmountLabel.text = "0"
+            self.DX2AmountLabel.text = "0"
+            self.DX3AmountLabel.text = "0"
+            self.DX4AmountLabel.text = "0"
+            self.C1AmountLabel.text = "0"
+            self.C3AmountLabel.text = "0"
+            self.C10AmountLabel.text = "0"
             self.B1StepperValue.value = 0
             self.B2StepperValue.value = 0
             self.S1StepperValue.value = 0
@@ -378,17 +588,25 @@ class SubViewController: UIViewController{
             self.D2StepperValue.value = 0
             self.D3StepperValue.value = 0
             self.D4StepperValue.value = 0
+            self.DX1StepperValue.value = 0
+            self.DX2StepperValue.value = 0
+            self.DX3StepperValue.value = 0
+            self.DX4StepperValue.value = 0
+            self.C1StepperValue.value = 0
+            self.C3StepperValue.value = 0
+            self.C10StepperValue.value = 0
             self.DBRef1.child("table/order").child(self.tableNumber!).child("time").setValue(0)
             self.DBRef1.child("table/status").child(self.tableNumber!).setValue(0)
             self.DBRef1.child("table/bstatus").child(self.tableNumber!).setValue(0)
             self.DBRef1.child("table/tbstatus").child(self.tableNumber!).setValue(0)
             self.DBRef1.child("table/sstatus").child(self.tableNumber!).setValue(0)
             self.DBRef1.child("table/dstatus").child(self.tableNumber!).setValue(0)
+            self.DBRef1.child("table/dxstatus").child(self.tableNumber!).setValue(0)
             self.DBRef1.child("table/destatus").child(self.tableNumber!).setValue(0)
             //オーダーキーのリセット
             var hogekey : String?
-            let defaultPlace9 = self.DBRef1.child("table/orderkey").child(self.tableNumber!)
-            defaultPlace9.observeSingleEvent(of: .value, with: { (snapshot) in
+            let defaultPlace16 = self.DBRef1.child("table/orderkey").child(self.tableNumber!)
+            defaultPlace16.observeSingleEvent(of: .value, with: { (snapshot) in
                 hogekey = (snapshot.value! as AnyObject).description
                 self.DBRef1.child("table/orderorder").child(hogekey!).setValue(nil)
                 self.DBRef1.child("todata").child(hogekey!).setValue(nil)
@@ -468,6 +686,41 @@ class SubViewController: UIViewController{
             self.D4AmountLabel.text = self.d4amount!
             self.D4StepperValue.value = Double(Int(self.d4amount!)!)
         }
+        let defaultPlace25 = DBRef1.child("table/order").child(tableNumber!).child("dx1amount")
+        defaultPlace25.observe(.value) { (snap: DataSnapshot) in self.dx1amount = (snap.value! as AnyObject).description
+            self.DX1AmountLabel.text = self.dx1amount!
+            self.DX1StepperValue.value = Double(Int(self.dx1amount!)!)
+        }
+        let defaultPlace26 = DBRef1.child("table/order").child(tableNumber!).child("dx2amount")
+        defaultPlace26.observe(.value) { (snap: DataSnapshot) in self.dx2amount = (snap.value! as AnyObject).description
+            self.DX2AmountLabel.text = self.dx2amount!
+            self.DX2StepperValue.value = Double(Int(self.dx2amount!)!)
+        }
+        let defaultPlace27 = DBRef1.child("table/order").child(tableNumber!).child("dx3amount")
+        defaultPlace27.observe(.value) { (snap: DataSnapshot) in self.dx3amount = (snap.value! as AnyObject).description
+            self.DX3AmountLabel.text = self.dx3amount!
+            self.DX3StepperValue.value = Double(Int(self.dx3amount!)!)
+        }
+        let defaultPlace28 = DBRef1.child("table/order").child(tableNumber!).child("dx4amount")
+        defaultPlace28.observe(.value) { (snap: DataSnapshot) in self.dx4amount = (snap.value! as AnyObject).description
+            self.DX4AmountLabel.text = self.dx4amount!
+            self.DX4StepperValue.value = Double(Int(self.dx4amount!)!)
+        }
+        let defaultPlace19 = DBRef1.child("table/order").child(tableNumber!).child("c1amount")
+        defaultPlace19.observe(.value) { (snap: DataSnapshot) in self.c1amount = (snap.value! as AnyObject).description
+            self.C1AmountLabel.text = self.c1amount!
+            self.C1StepperValue.value = Double(Int(self.c1amount!)!)
+        }
+        let defaultPlace20 = DBRef1.child("table/order").child(tableNumber!).child("c3amount")
+        defaultPlace20.observe(.value) { (snap: DataSnapshot) in self.c3amount = (snap.value! as AnyObject).description
+            self.C3AmountLabel.text = self.c3amount!
+            self.C3StepperValue.value = Double(Int(self.c3amount!)!)
+        }
+        let defaultPlace21 = DBRef1.child("table/order").child(tableNumber!).child("c10amount")
+        defaultPlace21.observe(.value) { (snap: DataSnapshot) in self.c10amount = (snap.value! as AnyObject).description
+            self.C10AmountLabel.text = self.c10amount!
+            self.C10StepperValue.value = Double(Int(self.c10amount!)!)
+        }
         
         //全食数の取得
         let defaultPlace8 = self.DBRef1.child("table/allorder/allb3amount")
@@ -506,6 +759,34 @@ class SubViewController: UIViewController{
         defaultPlace14.observeSingleEvent(of: .value, with: { (snapshot) in
             self.AllD4AmountLabel.text = (snapshot.value! as AnyObject).description
         })
+        let defaultPlace30 = self.DBRef1.child("table/allorder/alldx1amount")
+        defaultPlace30.observeSingleEvent(of: .value, with: { (snapshot) in
+            self.AllDX1AmountLabel.text = (snapshot.value! as AnyObject).description
+        })
+        let defaultPlace31 = self.DBRef1.child("table/allorder/alldx2amount")
+        defaultPlace31.observeSingleEvent(of: .value, with: { (snapshot) in
+            self.AllDX2AmountLabel.text = (snapshot.value! as AnyObject).description
+        })
+        let defaultPlace32 = self.DBRef1.child("table/allorder/alldx3amount")
+        defaultPlace32.observeSingleEvent(of: .value, with: { (snapshot) in
+            self.AllDX3AmountLabel.text = (snapshot.value! as AnyObject).description
+        })
+        let defaultPlace33 = self.DBRef1.child("table/allorder/alldx4amount")
+        defaultPlace33.observeSingleEvent(of: .value, with: { (snapshot) in
+            self.AllDX4AmountLabel.text = (snapshot.value! as AnyObject).description
+        })
+        let defaultPlace22 = self.DBRef1.child("table/allorder/allc1amount")
+        defaultPlace22.observeSingleEvent(of: .value, with: { (snapshot) in
+            self.AllC1AmountLabel.text = (snapshot.value! as AnyObject).description
+        })
+        let defaultPlace23 = self.DBRef1.child("table/allorder/allc3amount")
+        defaultPlace23.observeSingleEvent(of: .value, with: { (snapshot) in
+            self.AllC3AmountLabel.text = (snapshot.value! as AnyObject).description
+        })
+        let defaultPlace24 = self.DBRef1.child("table/allorder/allc10amount")
+        defaultPlace24.observeSingleEvent(of: .value, with: { (snapshot) in
+            self.AllC10AmountLabel.text = (snapshot.value! as AnyObject).description
+        })
     }
     
     @objc func status(_ sender: Timer) {
@@ -531,6 +812,14 @@ class SubViewController: UIViewController{
                 self.DStatus.backgroundColor = UIColor.magenta
             }else{
                 self.DStatus.backgroundColor = UIColor.white
+            }
+        }
+        let defaultPlace3 = DBRef1.child("table/dxstatus").child(self.tableNumber!)
+        defaultPlace3.observe(.value) { (snap: DataSnapshot) in self.dxstatus = (snap.value! as AnyObject).description
+            if Int(self.dxstatus!) == 1{
+                self.DXStatus.backgroundColor = UIColor.magenta
+            }else{
+                self.DXStatus.backgroundColor = UIColor.white
             }
         }
     }

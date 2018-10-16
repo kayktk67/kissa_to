@@ -48,9 +48,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tablenumber = number[indexPath.row]
         //設定
-        //self.DBRef.child("table/order").child(self.number[indexPath.row]).setValue(["b1amount":0,"b2amount":0,"b3amount":0,"b4amount":0,"s1amount":0,"s2amount":0,"s3amount":0,"d1amount":0,"d2amount":0,"d3amount":0,"d4amount":0,"de1amount":0,"de2amount":0,"de3amount":0,"time":0])
-        //self.DBRef.child("table/allorder").setValue(["allb1amount":0,"allb2amount":0,"allb3amount":0,"allb4amount":0,"alls1amount":0,"alls2amount":0,"alls3amount":0,"alld1amount":0,"alld2amount":0,"alld3amount":0,"alld4amount":0,"allde1amount":0,"allde2amount":0,"allde3amount":0])
-        //self.DBRef.child("table/tbstatus").child(self.number[indexPath.row]).setValue(0)
+        //self.DBRef.child("table/order").child(self.number[indexPath.row]).setValue(["b1amount":0,"b2amount":0,"b3amount":0,"b4amount":0,"s1amount":0,"s2amount":0,"s3amount":0,"d1amount":0,"d2amount":0,"d3amount":0,"d4amount":0,"dx1amount":0,"dx2amount":0,"dx3amount":0,"dx4amount":0,"de1amount":0,"de2amount":0,"de3amount":0,"c1amount":0,"c3amount":0,"c10amount":0,"time":0])
+        //self.DBRef.child("table/allorder").setValue(["allb1amount":0,"allb2amount":0,"alls1amount":0,"alls2amount":0,"alls3amount":0,"alld1amount":0,"alld2amount":0,"alld3amount":0,"alld4amount":0,"alldx1amount":0,"alldx2amount":0,"alldx3amount":0,"alldx4amount":0,"allde1amount":0,"allde2amount":0,"allde3amount":0])
+        //self.DBRef.child("table/dxstatus").child(self.number[indexPath.row]).setValue(0)
         performSegue(withIdentifier:"tonextview", sender: nil)
         tableView.deselectRow(at: indexPath, animated:true)
     }

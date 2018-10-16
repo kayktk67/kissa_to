@@ -84,8 +84,8 @@
 			children = (
 				AAB5B9ED2149489E001F4AFE /* AppDelegate.swift */,
 				AAED2970214E1EA800FA7A0D /* Main.storyboard */,
-				AAED296F214E1EA700FA7A0D /* SubViewController.swift */,
 				AAED2971214E1EA800FA7A0D /* ViewController.swift */,
+				AAED296F214E1EA700FA7A0D /* SubViewController.swift */,
 				AAB5B9F4214948A1001F4AFE /* Assets.xcassets */,
 				AAB5B9F6214948A1001F4AFE /* LaunchScreen.storyboard */,
 				AAB5B9F9214948A1001F4AFE /* Info.plist */,
@@ -360,7 +360,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "kissa-to";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -380,7 +380,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "kissa-to";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};
